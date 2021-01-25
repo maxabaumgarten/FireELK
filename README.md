@@ -1,4 +1,4 @@
-# FireELK
+# FireELK 🔥🦌
 An ELK stack used for processing and visualizing firewall logs
 
 # Details
