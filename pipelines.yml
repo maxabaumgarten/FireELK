@@ -37,7 +37,7 @@ filter {
             rename => ["Action", "event.action"]
             rename => ["service_id", "network.protocol"]
             rename => ["rule_name", "rule.name"]
-            rename => ["xlatesrc", "sourcenat.ip"]
+            rename => ["xlatesrc", "source.nat.ip"]
             #rename => ["client_inbound_interface", "src.interface.name"]
             #rename => ["server_inbound_interface", "dst.interface.name"]
         }
@@ -50,10 +50,10 @@ filter {
           target => "destination.geo"
         }
         geoip {
-          source => "sourcenat.ip"
-          target => "sourcenat.geo"
+          source => "source.nat.ip"
+          target => "source.nat.geo"
         }
-        
+
 
     }
     cidr {
