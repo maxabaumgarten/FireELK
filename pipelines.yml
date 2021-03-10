@@ -15,8 +15,12 @@ filter {
             rename => ["action", "event.action"]
             rename => ["service", "network.protocol"]
             rename => ["policyid", "rule.id"]
-            #rename => ["srcitf", "src.interface.name"]
-            #rename => ["dstitf", "dst.interface.name"]
+            rename => ["srcitf", "src.interface.name"]
+            rename => ["dstitf", "dst.interface.name"]
+            rename => ["hostname", "url.domain"]
+            rename => ["profile", rule.ruleset]
+            rename => ["error", "error.message"]
+
         }
         geoip {
           source => "source.ip"
@@ -38,8 +42,11 @@ filter {
             rename => ["service_id", "network.protocol"]
             rename => ["rule_name", "rule.name"]
             rename => ["xlatesrc", "source.nat.ip"]
-            #rename => ["client_inbound_interface", "src.interface.name"]
-            #rename => ["server_inbound_interface", "dst.interface.name"]
+            rename => ["client_inbound_interface", "src.interface.name"]
+            rename => ["server_inbound_interface", "dst.interface.name"]
+            rename => ["resource", "url.domain"]
+            rename => ["name", "network.application"]
+            rename => ["properties", "service.type"]
         }
         geoip {
           source => "source.ip"
