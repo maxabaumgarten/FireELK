@@ -23,10 +23,10 @@ An ELK stack used for processing and visualizing firewall logs
 1. Install Docker and Docker-Compose
 2. Create the following folders/files:
 
--./elasticsearch/elasticsearch.yml
--./logstash/config/logstash.yml
--./logstash/pipeline (Pipelines are used for the logstash configs)
--./kibana/kibana.yml
+- ./elasticsearch/elasticsearch.yml
+- ./logstash/config/logstash.yml
+- ./logstash/pipeline (Pipelines are used for the logstash configs)
+- ./kibana/kibana.yml
 (.yml files not available yet. Visit www.elastic.co to get started)
 
 3.  docker-compose up -d
