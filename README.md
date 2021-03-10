@@ -22,6 +22,7 @@ An ELK stack used for processing and visualizing firewall logs
 # How do I run this?
 1. Install Docker and Docker-Compose
 2. Create the following folders/files:
+
   -./elasticsearch/elasticsearch.yml
   -./logstash/config/logstash.yml
   -./logstash/pipeline (Pipelines are used for the logstash configs)
