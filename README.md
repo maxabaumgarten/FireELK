@@ -1,7 +1,6 @@
 # FireELK 🔥🦌
 An ELK stack used for processing and visualizing firewall logs
 
-![Firewall Logs](https://github.com/maxabaumgarten/fireelk/blob/master/images/ELK%20firewall%20logs.PNG)
 ![Cool Pew Pew Map](https://github.com/maxabaumgarten/fireelk/blob/master/images/firewall%20laser%20beam%20map.PNG)
 
 # WARNING
