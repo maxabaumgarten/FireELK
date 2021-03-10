@@ -1,6 +1,8 @@
 # FireELK 🔥🦌
 An ELK stack used for processing and visualizing firewall logs
 
+![Firewall Logs](https://github.com/maxabaumgarten/fireelk/blob/master/images/ELK%20firewall%20logs.PNG)
+
 # WARNING
 - The passwords are all in plaintext
 - Look at the code, the passwords are all "Letmein123!"
