@@ -18,7 +18,7 @@ filter {
             rename => ["srcitf", "src.interface.name"]
             rename => ["dstitf", "dst.interface.name"]
             rename => ["hostname", "url.domain"]
-            rename => ["profile", rule.ruleset]
+            rename => ["profile", "rule.ruleset"]
             rename => ["error", "error.message"]
 
         }
