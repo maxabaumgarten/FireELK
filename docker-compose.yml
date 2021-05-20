@@ -21,8 +21,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: 5
-        max-size: 10m
+        max-size: "2048m"
     networks:
       - elk
 
@@ -46,8 +45,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: 5
-        max-size: 10m
+        max-size: "10m"
     networks:
       - elk
     depends_on:
@@ -65,8 +63,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: 5
-        max-size: 10m
+        max-size: "10m"
     networks:
       - elk
     depends_on:
