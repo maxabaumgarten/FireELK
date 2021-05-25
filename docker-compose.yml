@@ -11,8 +11,7 @@ services:
       - type: volume
         source: elasticsearch
         target: /usr/share/elasticsearch/data
-      - type: bind
-        certs: $CERTS_DIR
+      - certs:$CERTS_DIR
     environment:
       ES_JAVA_OPTS: "-Xmx2g -Xms2g"
       discovery.type: single-node
