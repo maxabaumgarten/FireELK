@@ -16,9 +16,6 @@ services:
       ES_JAVA_OPTS: "-Xmx2g -Xms2g"
       discovery.type: single-node
       ELASTIC_PASSWORD: $ELASTIC_PASSWORD
-      xpack.license.self_generated.type=trial 
-      xpack.security.enabled=true
-      xpack.security.http.ssl.enabled=true
       xpack.security.http.ssl.key: $CERTS_DIR/es01/es01.key
       xpack.security.http.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
       xpack.security.http.ssl.certificate: $CERTS_DIR/es01/es01.crt
@@ -53,6 +50,15 @@ services:
       - "9600:9600"
     environment:
       LS_JAVA_OPTS: "-Xmx512m -Xms512m"
+#      SERVERNAME: localhost
+#      ELASTICSEARCH_URL: https://es01:9200
+#      ELASTICSEARCH_HOSTS: https://es01:9200
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
+      ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES: $CERTS_DIR/ca/ca.crt
+      SERVER_SSL_ENABLED: "true"
+      SERVER_SSL_KEY: $CERTS_DIR/kib01/kib01.key
+      SERVER_SSL_CERTIFICATE: $CERTS_DIR/kib01/kib01.crt
     logging:
       driver: "json-file"
       options:
