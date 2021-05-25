@@ -49,3 +49,4 @@ v.04
 - VyOS/Ubiquiti Edgerouter Syslog > ECS
 - Certificate Based X-Pack Security
 - Improved Elastic Security (SIEM) support
+- Use .env file for credentials

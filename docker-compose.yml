@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:${VERSION}
     volumes:
       - type: bind
         source: ./elasticsearch/elasticsearch.yml
@@ -11,10 +11,22 @@ services:
       - type: volume
         source: elasticsearch
         target: /usr/share/elasticsearch/data
+      - certs: $CERTS_DIR
     environment:
       ES_JAVA_OPTS: "-Xmx2g -Xms2g"
       discovery.type: single-node
-      ELASTIC_PASSWORD: "Letmein123!"
+      ELASTIC_PASSWORD: $ELASTIC_PASSWORD
+      xpack.license.self_generated.type: trial 
+      xpack.security.enabled: true
+      xpack.security.http.ssl.enabled: true
+      xpack.security.http.ssl.key: $CERTS_DIR/es01/es01.key
+      xpack.security.http.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
+      xpack.security.http.ssl.certificate: $CERTS_DIR/es01/es01.crt
+      xpack.security.transport.ssl.enabled: true
+      xpack.security.transport.ssl.verification_mode: certificate 
+      xpack.security.transport.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
+      xpack.security.transport.ssl.certificate: $CERTS_DIR/es01/es01.crt
+      xpack.security.transport.ssl.key: $CERTS_DIR/es01/es01.key
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -26,7 +38,7 @@ services:
       - elk
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.12.0
+    image: docker.elastic.co/logstash/logstash:${VERSION}
     volumes:
       - type: bind
         source: ./logstash/config/logstash.yml
@@ -52,7 +64,7 @@ services:
       - elasticsearch
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.12.0
+    image: docker.elastic.co/kibana/kibana:${VERSION}
     volumes:
       - type: bind
         source: ./kibana/kibana.yml
@@ -68,41 +80,6 @@ services:
       - elk
     depends_on:
       - elasticsearch
-  
-  # filebeat:
-  #   image: docker.elastic.co/beats/filebeat:7.11.2
-  #   command: filebeat -e -strict.perms=false
-  #   volumes:
-  #     - type: bind
-  #       source: ./beats/filebeat.yml
-  #       target: /usr/share/filebeat/filebeat.yml
-  #       read_only: true
-  #     - type: bind
-  #       source: ./beats/netflow.yml
-  #       target: /usr/share/filebeat/netflow.yml
-  #       read_only: true
-  #   ports:
-  #     - "2055:2055"
-  #   networks:
-  #     - elk
-  #   depends_on:
-  #     - elasticsearch
-  
-  # flow-collector:
-  #   image: elastiflow/flow-collector:5.0.0
-  #   container_name: flow-collector
-  #   #restart: 'unless-stopped'
-  #   network_mode: 'host'
-  #   volumes:
-  #     - /etc/elastiflow:/etc/elastiflow
-  #   environment:
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_ENABLE: 'true'
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_OVERWRITE: 'true'
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_SHARDS: 1
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_REPLICAS: 0
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_ADDRESSES: 'elasticsearch:9200'
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_USERNAME: 'elastic'
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_PASSWORD: 'Letmein123!'
 
 networks:
   elk:
