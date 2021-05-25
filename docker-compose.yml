@@ -16,9 +16,9 @@ services:
       ES_JAVA_OPTS: "-Xmx2g -Xms2g"
       discovery.type: single-node
       ELASTIC_PASSWORD: $ELASTIC_PASSWORD
-      - xpack.license.self_generated.type=trial 
-      - xpack.security.enabled=true
-      - xpack.security.http.ssl.enabled=true
+      xpack.license.self_generated.type=trial 
+      xpack.security.enabled=true
+      xpack.security.http.ssl.enabled=true
       xpack.security.http.ssl.key: $CERTS_DIR/es01/es01.key
       xpack.security.http.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
       xpack.security.http.ssl.certificate: $CERTS_DIR/es01/es01.crt
