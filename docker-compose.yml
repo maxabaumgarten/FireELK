@@ -61,11 +61,11 @@ services:
       - node.name=logstash
       - xpack.security.transport.ssl.certificate_authority=$CERTS_DIR/ca/ca.crt
       - xpack.monitoring.elasticsearch.hosts="https://elasticsearch:9200"
-#      - xpack.monitoring.enabled=true
-#      - xpack.monitoring.elasticsearch.username=elastic
-#      - xpack.monitoring.elasticsearch.password=$ELASTIC_PASSWORD
-#      - xpack.management.elasticsearch.username=elastic    
-#      - xpack.management.elasticsearch.password=${ELASTIC_PASSWORD}"
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.elasticsearch.username=elastic
+      - xpack.monitoring.elasticsearch.password=$ELASTIC_PASSWORD
+      - xpack.management.elasticsearch.username=elastic    
+      - xpack.management.elasticsearch.password=${ELASTIC_PASSWORD}"
     volumes:
       - certs:$CERTS_DIR
     logging:
