@@ -1,1 +1,15 @@
-#pipeline file should go here
+input {
+       beats {
+        port => 5044
+       }
+}
+# Add your filters / logstash plugins configuration here
+
+output {
+  elasticsearch {
+    hosts => "elasticsearch:9200"
+    index => "logstash-%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+    user => "elastic"
+    password => "Letmein123!"
+  }
+}
