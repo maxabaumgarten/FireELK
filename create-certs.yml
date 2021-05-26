@@ -14,6 +14,22 @@ services:
       '
     user: "0"
     working_dir: /usr/share/elasticsearch
-    volumes: ['certs:/certs', '.:/usr/share/elasticsearch/config/certificates']
+    volumes: ['certs:/usr/share/elasticsearch/config/certificates']
+#    volumes: ['certs:/certs', '.:/usr/share/elasticsearch/config/certificates']
 
-volumes: {"certs"}
+# volumes: {"certs"}
+
+# services:
+#   create_certs:
+#     container_name: create_certs
+#     image: docker.elastic.co/elasticsearch/elasticsearch:6.8.0
+#     command: >
+#       bash -c '
+#         if [[ ! -f ./config/certificates/elastic-certificates.p12 ]]; then
+#           bin/elasticsearch-certutil cert -out config/certificates/elastic-certificates.p12 -pass ""
+#         fi;
+#         chown -R 1000:0 /usr/share/elasticsearch/config/certificates
+#       '
+#     user: "0"
+#     working_dir: /usr/share/elasticsearch
+#     volumes: ['certs:/usr/share/elasticsearch/config/certificates']
