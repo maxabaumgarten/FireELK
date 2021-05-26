@@ -58,7 +58,7 @@ services:
       - "9600:9600"
     environment:
       - "LS_JAVA_OPTS=-Xmx512m -Xms512m"
-      - xpack.monitoring.elasticsearch.hosts="http://elasticsearch:9200"
+      - xpack.monitoring.elasticsearch.hosts="https://elasticsearch:9200"
       - xpack.monitoring.enabled=true
       - xpack.monitoring.elasticsearch.username=elastic
       - xpack.monitoring.elasticsearch.password=$ELASTIC_PASSWORD
