@@ -1,0 +1,15 @@
+node.name: "logstash"
+http.host: "0.0.0.0"
+
+path.settings: ${CONFIG_DIR}
+
+# X-Pack Security Options
+xpack.management.elasticsearch.username: elastic
+xpack.management.elasticsearch.password: "${ELASTIC_PASSWORD}"
+
+xpack.monitoring.elasticsearch.username: elastic
+xpack.monitoring.elasticsearch.password: "${ELASTIC_PASSWORD}"
+xpack.monitoring.elasticsearch.ssl.certificate_authority: "${CONFIG_DIR}/ca.crt"
+
+# Metricbeat settings
+monitoring.enabled: false
