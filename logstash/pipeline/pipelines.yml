@@ -85,6 +85,7 @@ output {
     hosts => ["https://elasticsearch:9200"]
     ssl => true
     ssl_certificate_verification => false
+    cacert => '/usr/share/elasticsearch/config/certificates/ca.crt'
     index => "logstash-%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
     user => "elastic"
     password => "Letmein123!"
