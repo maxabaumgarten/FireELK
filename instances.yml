@@ -11,3 +11,8 @@ instances:
     dns: 
       - kibana
       - localhost
+  
+  - name: 'logstash'
+    dns: 
+      - logstash
+      - localhost
