@@ -57,7 +57,13 @@ services:
       - "5044:5044"
       - "9600:9600"
     environment:
-      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
+      - "LS_JAVA_OPTS=-Xmx512m -Xms512m"
+      - xpack.monitoring.elasticsearch.hosts="http://elasticsearch:9200"
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.elasticsearch.username=elastic
+      - xpack.monitoring.elasticsearch.password=$ELASTIC_PASSWORD
+      - xpack.management.elasticsearch.username=elastic    
+      - xpack.management.elasticsearch.password=${ELASTIC_PASSWORD}"
 
     logging:
       driver: "json-file"
