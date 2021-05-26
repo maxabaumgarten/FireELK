@@ -17,7 +17,7 @@ services:
     environment:
       - "ES_JAVA_OPTS=-Xmx2g -Xms2g"
       - discovery.type=single-node
-      #ELASTIC_PASSWORD: $ELASTIC_PASSWORD
+      ELASTIC_PASSWORD: $ELASTIC_PASSWORD
       # xpack.security.http.ssl.key: $CERTS_DIR/elasticsearch/elasticsearch.key
       # xpack.security.http.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
       # xpack.security.http.ssl.certificate: $CERTS_DIR/elasticsearch/elasticsearch.crt
@@ -89,7 +89,7 @@ services:
       SERVERNAME: localhost
       ELASTICSEARCH_URL: https://elasticsearch:9200
       ELASTICSEARCH_HOSTS: https://elasticsearch:9200
-      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_USERNAME: kibana_system
       ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
       ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES: $CERTS_DIR/ca/ca.crt
       SERVER_SSL_ENABLED: "true"
