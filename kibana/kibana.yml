@@ -42,7 +42,7 @@ server.host: "0.0.0.0"
 # X-Pack settings
 # xpack.monitoring.ui.container.elasticsearch.enabled: true
 # xpack.security.enabled: true
-# xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
+xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
 # xpack.fleet.agents.tlsCheckDisabled: true
 
 # If your Elasticsearch is protected with basic authentication, these settings provide
@@ -110,7 +110,7 @@ server.host: "0.0.0.0"
 
 # Set the value of this setting to true to log all events, including system usage information
 # and all requests.
-logging.verbose: true
+#logging.verbose: true
 
 # Set the interval in milliseconds to sample system and process performance
 # metrics. Minimum is 100ms. Defaults to 5000.
