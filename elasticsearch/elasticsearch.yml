@@ -14,7 +14,7 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: docker-cluster
+# cluster.name: docker-cluster
 #
 # ------------------------------------ Node ------------------------------------
 #
@@ -87,8 +87,8 @@ http.port: 9200
 #
 #action.destructive_requires_name: true
 
-xpack.license.self_generated.type: trial
-xpack.security.enabled: true
-xpack.monitoring.collection.enabled: true
-xpack.security.authc.api_key.enabled: true
-xpack.security.http.ssl.enabled: true
+# xpack.license.self_generated.type: trial
+# xpack.security.enabled: true
+# xpack.monitoring.collection.enabled: true
+# xpack.security.authc.api_key.enabled: true
+# xpack.security.http.ssl.enabled: true
