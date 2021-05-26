@@ -15,9 +15,9 @@ services:
       - certs:$CERTS_DIR
 
     environment:
-      ES_JAVA_OPTS: "-Xmx2g -Xms2g"
-      discovery.type: single-node
-      ELASTIC_PASSWORD: $ELASTIC_PASSWORD
+      - "ES_JAVA_OPTS=-Xmx2g -Xms2g"
+      - discovery.type: single-node
+      #ELASTIC_PASSWORD: $ELASTIC_PASSWORD
       # xpack.security.http.ssl.key: $CERTS_DIR/elasticsearch/elasticsearch.key
       # xpack.security.http.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
       # xpack.security.http.ssl.certificate: $CERTS_DIR/elasticsearch/elasticsearch.crt
