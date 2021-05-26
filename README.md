@@ -50,3 +50,7 @@ v.04
 - Certificate Based X-Pack Security
 - Improved Elastic Security (SIEM) support
 - Use .env file for credentials
+
+docker-compose --verbose -f create-certs.yml run --rm create_certs
+docker-compose up -d
+docker-compose down -v
