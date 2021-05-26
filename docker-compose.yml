@@ -3,6 +3,7 @@ version: '3.2'
 services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:${VERSION}
+    container_name: elasticsearch
     volumes:
       - type: bind
         source: ./elasticsearch/elasticsearch.yml
@@ -17,13 +18,25 @@ services:
       ES_JAVA_OPTS: "-Xmx2g -Xms2g"
       discovery.type: single-node
       ELASTIC_PASSWORD: $ELASTIC_PASSWORD
-      xpack.security.http.ssl.key: $CERTS_DIR/elasticsearch/elasticsearch.key
-      xpack.security.http.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
-      xpack.security.http.ssl.certificate: $CERTS_DIR/elasticsearch/elasticsearch.crt
-      xpack.security.transport.ssl.verification_mode: certificate 
-      xpack.security.transport.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
-      xpack.security.transport.ssl.certificate: $CERTS_DIR/elasticsearch/elasticsearch.crt
-      xpack.security.transport.ssl.key: $CERTS_DIR/elasticsearch/elasticsearch.key
+      # xpack.security.http.ssl.key: $CERTS_DIR/elasticsearch/elasticsearch.key
+      # xpack.security.http.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
+      # xpack.security.http.ssl.certificate: $CERTS_DIR/elasticsearch/elasticsearch.crt
+      # xpack.security.transport.ssl.verification_mode: certificate 
+      # xpack.security.transport.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
+      # xpack.security.transport.ssl.certificate: $CERTS_DIR/elasticsearch/elasticsearch.crt
+      # xpack.security.transport.ssl.key: $CERTS_DIR/elasticsearch/elasticsearch.key
+      - node.name=elasticsearch     
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=true      
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=$CERTS_DIR/elasticsearch/elasticsearch.key
+      - xpack.security.http.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.http.ssl.certificate=$CERTS_DIR/elasticsearch/elasticsearch.crt
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate 
+      - xpack.security.transport.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.transport.ssl.certificate=$CERTS_DIR/elasticsearch/elasticsearch.crt
+      - xpack.security.transport.ssl.key=$CERTS_DIR/elasticsearch/elasticsearch.key
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -54,12 +67,12 @@ services:
 #      SERVERNAME: localhost
 #      ELASTICSEARCH_URL: https://elasticsearch:9200
 #      ELASTICSEARCH_HOSTS: https://elasticsearch:9200
-      ELASTICSEARCH_USERNAME: elastic
-      ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
-      ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES: $CERTS_DIR/ca/ca.crt
-      SERVER_SSL_ENABLED: "true"
-      SERVER_SSL_KEY: $CERTS_DIR/kibana/kibana.key
-      SERVER_SSL_CERTIFICATE: $CERTS_DIR/kibana/kibana.crt
+      # ELASTICSEARCH_USERNAME: elastic
+      # ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
+      # ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES: $CERTS_DIR/ca/ca.crt
+      # SERVER_SSL_ENABLED: "true"
+      # SERVER_SSL_KEY: $CERTS_DIR/kibana/kibana.key
+      # SERVER_SSL_CERTIFICATE: $CERTS_DIR/kibana/kibana.crt
     logging:
       driver: "json-file"
       options:
@@ -76,7 +89,7 @@ services:
       ELASTICSEARCH_URL: https://elasticsearch:9200
       ELASTICSEARCH_HOSTS: https://elasticsearch:9200
       ELASTICSEARCH_USERNAME: kibana_system
-      ELASTICSEARCH_PASSWORD: CHANGEME
+      ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
       ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES: $CERTS_DIR/ca/ca.crt
       SERVER_SSL_ENABLED: "true"
       SERVER_SSL_KEY: $CERTS_DIR/kibana/kibana.key
