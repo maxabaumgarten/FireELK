@@ -84,6 +84,7 @@ services:
 
   kibana:
     image: docker.elastic.co/kibana/kibana:${VERSION}
+    container_name: kibana
     environment:
       SERVERNAME: localhost
       ELASTICSEARCH_URL: https://elasticsearch:9200
