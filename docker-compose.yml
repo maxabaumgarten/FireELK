@@ -62,8 +62,8 @@ services:
       - xpack.monitoring.enabled=true
       - xpack.monitoring.elasticsearch.username=elastic
       - xpack.monitoring.elasticsearch.password=$ELASTIC_PASSWORD
-      - xpack.management.elasticsearch.username=elastic    
-      - xpack.management.elasticsearch.password=${ELASTIC_PASSWORD}"
+#      - xpack.management.elasticsearch.username=elastic    
+#      - xpack.management.elasticsearch.password=${ELASTIC_PASSWORD}"
 
     logging:
       driver: "json-file"
