@@ -17,13 +17,13 @@ services:
       ES_JAVA_OPTS: "-Xmx2g -Xms2g"
       discovery.type: single-node
       ELASTIC_PASSWORD: $ELASTIC_PASSWORD
-      xpack.security.http.ssl.key: $CERTS_DIR/es01/es01.key
+      xpack.security.http.ssl.key: $CERTS_DIR/elasticsearch/elasticsearch.key
       xpack.security.http.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
-      xpack.security.http.ssl.certificate: $CERTS_DIR/es01/es01.crt
+      xpack.security.http.ssl.certificate: $CERTS_DIR/elasticsearch/elasticsearch.crt
       xpack.security.transport.ssl.verification_mode: certificate 
       xpack.security.transport.ssl.certificate_authorities: $CERTS_DIR/ca/ca.crt
-      xpack.security.transport.ssl.certificate: $CERTS_DIR/es01/es01.crt
-      xpack.security.transport.ssl.key: $CERTS_DIR/es01/es01.key
+      xpack.security.transport.ssl.certificate: $CERTS_DIR/elasticsearch/elasticsearch.crt
+      xpack.security.transport.ssl.key: $CERTS_DIR/elasticsearch/elasticsearch.key
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -58,8 +58,8 @@ services:
       ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
       ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES: $CERTS_DIR/ca/ca.crt
       SERVER_SSL_ENABLED: "true"
-      SERVER_SSL_KEY: $CERTS_DIR/kib01/kib01.key
-      SERVER_SSL_CERTIFICATE: $CERTS_DIR/kib01/kib01.crt
+      SERVER_SSL_KEY: $CERTS_DIR/kibana/kibana.key
+      SERVER_SSL_CERTIFICATE: $CERTS_DIR/kibana/kibana.crt
     logging:
       driver: "json-file"
       options:
