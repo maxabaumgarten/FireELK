@@ -26,15 +26,19 @@ v.04
 
 # How do I run this?
 1. Install Docker and Docker-Compose
-2. Create the following folders/files:
+2. Create CA and Certificates
+```sh
+docker-compose -f create-certs.yml run --rm create_certs
+```
+3. Build and Start ELK
+```sh
+docker-compose up -d
+```
 
-- ./elasticsearch/elasticsearch.yml
-- ./logstash/config/logstash.yml
-- ./logstash/pipeline (Pipelines are used for the logstash configs)
-- ./kibana/kibana.yml
-(.yml files not available yet. Visit www.elastic.co to get started)
-
-3.  docker-compose up -d
+# How do I destroy this?
+```sh
+docker-compose down -v
+```
 
 # Supported Firewall Syslog ECS Conversions
 - Check Point (Gaia Embedded)
@@ -50,7 +54,3 @@ v.04
 - Certificate Based X-Pack Security
 - Improved Elastic Security (SIEM) support
 - Use .env file for credentials
-
-docker-compose --verbose -f create-certs.yml run --rm create_certs
-docker-compose up -d
-docker-compose down -v
