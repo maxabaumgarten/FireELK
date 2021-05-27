@@ -1,4 +1,4 @@
-version: '3.2'
+version: '3'
 
 services:
   elasticsearch:
@@ -13,7 +13,6 @@ services:
         source: elasticsearch
         target: /usr/share/elasticsearch/data
       - certs:$CERTS_DIR
-
     environment:
       - "ES_JAVA_OPTS=-Xmx2g -Xms2g"
       - discovery.type=single-node
@@ -44,8 +43,16 @@ services:
     image: docker.elastic.co/logstash/logstash:${VERSION}
     container_name: logstash
     volumes:
-      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ./logstash/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - type: bind
+        source: ./logstash/config/logstash.yml
+        target: /usr/share/logstash/config/logstash.yml
+#        read_only: true
+      - type: bind
+        source: ./logstash/pipeline/logstash.conf
+        target: /usr/share/logstash/pipeline/logstash.conf
+        read_only: true
+#      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+#      - ./logstash/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     ports:
       - "5000:5000/udp"
       - "5044:5044"
