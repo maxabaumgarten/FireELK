@@ -65,7 +65,7 @@ services:
       - xpack.monitoring.elasticsearch.username=elastic
       - xpack.monitoring.elasticsearch.password=$ELASTIC_PASSWORD
       - xpack.management.elasticsearch.username=elastic    
-      - xpack.management.elasticsearch.password=${ELASTIC_PASSWORD}"
+      - xpack.management.elasticsearch.password=${ELASTIC_PASSWORD}
     volumes:
       - certs:$CERTS_DIR
     logging:
