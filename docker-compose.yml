@@ -51,7 +51,7 @@ services:
       - type: bind
         source: ./logstash/pipeline/logstash.conf
         target: /usr/share/logstash/pipeline/logstash.conf
-        read_only: true
+#        read_only: true
     ports:
       - "5000:5000/udp"
       - "5044:5044"
