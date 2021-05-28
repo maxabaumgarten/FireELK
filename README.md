@@ -6,9 +6,12 @@ v.04
 ![Firewall Logs](https://github.com/maxabaumgarten/fireelk/blob/master/images/firewall%20logs.PNG)
 ![Cool Pew Pew Map](https://github.com/maxabaumgarten/fireelk/blob/master/images/firewall%20laser%20beam%20map.PNG)
 ![ELK Firewall Charts](https://github.com/maxabaumgarten/fireelk/blob/master/images/elk%20firewall%20visualization.PNG)
+
 # WARNING
+
 - Passwords are set using the .env
 - This was built in mind for simple functionality. Not Security.
+- Tested with ELK 7.11, 7.12, and 7.13.0
 
 # Details
 - Provides a unified platform to ingest, parse, and visualize logs
