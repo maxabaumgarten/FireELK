@@ -49,8 +49,8 @@ services:
         target: /usr/share/logstash/config/logstash.yml
 #        read_only: true
       - type: bind
-        source: ./logstash/pipeline/logstash.conf
-        target: /usr/share/logstash/pipeline/logstash.conf
+        source: ./logstash/pipeline/
+        target: /usr/share/logstash/pipeline/
         read_only: true
       - certs:$CERTS_DIR
 #      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
@@ -61,9 +61,6 @@ services:
       - "9600:9600"
     environment:
       - "LS_JAVA_OPTS=-Xmx512m -Xms512m"
-#      - path.data: 
-      - path.config=null
-      - path.settings=null
       - node.name=logstash
       - xpack.security.transport.ssl.certificate_authority=$CERTS_DIR/ca/ca.crt
       - xpack.monitoring.elasticsearch.hosts="https://elasticsearch:9200"
