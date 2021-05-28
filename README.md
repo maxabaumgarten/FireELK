@@ -14,11 +14,10 @@ v.04
 - Tested with ELK 7.11, 7.12, and 7.13.0 on Ubuntu 20.04
 
 # Details
+- Two docker-compose commands and you have a fully functioning ELK stack.
+- Set credentials/details with ```.env``` file
 - Provides a unified platform to ingest, parse, and visualize logs
-- Centralize multi-vendor logs
-- Converts firewall syslog into the ECS (Elastic Common Schema) with Logstash
-- Docker-Compose: Spins up a single node cluster of Elasticsearch, Logstash, Kibana
-- Password Based X-Pack Security (The password is Letmein123!)
+- Currently setup with a Pipeline for my specific lab for analyzing multi-vendor firewall logs
 
 # Who should use this?
 - Homelabbers who want a simple functioning ELK stack
