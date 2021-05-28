@@ -1,5 +1,5 @@
 # FireELK 🔥🦌
-An ELK stack used for processing and visualizing firewall logs
+An ELK Stack deployed with TLS Security for Logs
 
 v.04
 
@@ -7,12 +7,11 @@ v.04
 ![Cool Pew Pew Map](https://github.com/maxabaumgarten/fireelk/blob/master/images/firewall%20laser%20beam%20map.PNG)
 ![ELK Firewall Charts](https://github.com/maxabaumgarten/fireelk/blob/master/images/elk%20firewall%20visualization.PNG)
 # WARNING
-- The passwords are all in plaintext
-- Look at the code, the passwords are all "Letmein123!"
-- Certificate based authentication/encryption coming soon
+- Passwords are set using the .env
+- This was built in mind for simple functionality. Not Security.
 
 # Details
-- Provides a unified platform to ingest, parse, and visualize firewall logs
+- Provides a unified platform to ingest, parse, and visualize logs
 - Centralize multi-vendor logs
 - Converts firewall syslog into the ECS (Elastic Common Schema) with Logstash
 - Docker-Compose: Spins up a single node cluster of Elasticsearch, Logstash, Kibana
@@ -36,6 +35,8 @@ docker-compose up -d
 ```
 
 # How do I destroy this?
+
+This will destroy all of ur data.
 ```sh
 docker-compose down -v
 ```
