@@ -11,7 +11,7 @@ v.04
 
 - Passwords are set using the .env
 - This was built in mind for simple functionality. Not Security.
-- Tested with ELK 7.11, 7.12, and 7.13.0
+- Tested with ELK 7.11, 7.12, and 7.13.0 on Ubuntu 20.04
 
 # Details
 - Provides a unified platform to ingest, parse, and visualize logs
