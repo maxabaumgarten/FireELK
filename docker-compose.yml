@@ -1,8 +1,9 @@
-version: '3.2'
+version: '3.7'
 
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:${VERSION}
+    container_name: elasticsearch
     volumes:
       - type: bind
         source: ./elasticsearch/elasticsearch.yml
@@ -11,101 +12,99 @@ services:
       - type: volume
         source: elasticsearch
         target: /usr/share/elasticsearch/data
+      - certs:$CERTS_DIR
     environment:
-      ES_JAVA_OPTS: "-Xmx2g -Xms2g"
-      discovery.type: single-node
-      ELASTIC_PASSWORD: "Letmein123!"
+      - "ES_JAVA_OPTS=-Xmx2g -Xms2g"
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+      - node.name=elasticsearch     
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=true      
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=$CERTS_DIR/elasticsearch/elasticsearch.key
+      - xpack.security.http.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.http.ssl.certificate=$CERTS_DIR/elasticsearch/elasticsearch.crt
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate 
+      - xpack.security.transport.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.transport.ssl.certificate=$CERTS_DIR/elasticsearch/elasticsearch.crt
+      - xpack.security.transport.ssl.key=$CERTS_DIR/elasticsearch/elasticsearch.key
     ports:
       - "9200:9200"
       - "9300:9300"
     logging:
       driver: "json-file"
       options:
-        max-file: 5
-        max-size: 10m
+        max-size: "2048m"
     networks:
       - elk
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.12.0
+    image: docker.elastic.co/logstash/logstash:${VERSION}
+    container_name: logstash
     volumes:
       - type: bind
         source: ./logstash/config/logstash.yml
         target: /usr/share/logstash/config/logstash.yml
-        read_only: true
       - type: bind
-        source: ./logstash/pipeline
-        target: /usr/share/logstash/pipeline
+        source: ./logstash/pipeline/logstash.conf
+        target: /usr/share/logstash/pipeline/logstash.conf
         read_only: true
+      - certs:$CERTS_DIR
     ports:
       - "5000:5000/udp"
       - "5044:5044"
       - "9600:9600"
     environment:
-      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
+      - "LS_JAVA_OPTS=-Xmx512m -Xms512m"
+      - node.name=logstash
+      - xpack.security.transport.ssl.certificate_authority=$CERTS_DIR/ca/ca.crt
+      - xpack.monitoring.elasticsearch.hosts="https://elasticsearch:9200"
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.elasticsearch.username=elastic
+      - xpack.monitoring.elasticsearch.password=$ELASTIC_PASSWORD
+      - xpack.management.elasticsearch.username=elastic    
+      - xpack.management.elasticsearch.password=${ELASTIC_PASSWORD}
+      - E_USER=elastic
+      - E_PASS=$ELASTIC_PASSWORD
     logging:
       driver: "json-file"
       options:
-        max-file: 5
-        max-size: 10m
+        max-size: "10m"
     networks:
       - elk
     depends_on:
       - elasticsearch
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.12.0
+    image: docker.elastic.co/kibana/kibana:${VERSION}
+    container_name: kibana
+    environment:
+      SERVERNAME: localhost
+      ELASTICSEARCH_URL: https://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: https://elasticsearch:9200
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
+      ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES: $CERTS_DIR/ca/ca.crt
+      SERVER_SSL_ENABLED: "true"
+      SERVER_SSL_KEY: $CERTS_DIR/kibana/kibana.key
+      SERVER_SSL_CERTIFICATE: $CERTS_DIR/kibana/kibana.crt    
     volumes:
       - type: bind
         source: ./kibana/kibana.yml
         target: /usr/share/kibana/config/kibana.yml
         read_only: true
+      - certs:$CERTS_DIR
     ports:
       - "5601:5601"
     logging:
       driver: "json-file"
       options:
-        max-file: 5
-        max-size: 10m
+        max-size: "10m"
     networks:
       - elk
     depends_on:
       - elasticsearch
-  
-  # filebeat:
-  #   image: docker.elastic.co/beats/filebeat:7.11.2
-  #   command: filebeat -e -strict.perms=false
-  #   volumes:
-  #     - type: bind
-  #       source: ./beats/filebeat.yml
-  #       target: /usr/share/filebeat/filebeat.yml
-  #       read_only: true
-  #     - type: bind
-  #       source: ./beats/netflow.yml
-  #       target: /usr/share/filebeat/netflow.yml
-  #       read_only: true
-  #   ports:
-  #     - "2055:2055"
-  #   networks:
-  #     - elk
-  #   depends_on:
-  #     - elasticsearch
-  
-  # flow-collector:
-  #   image: elastiflow/flow-collector:5.0.0
-  #   container_name: flow-collector
-  #   #restart: 'unless-stopped'
-  #   network_mode: 'host'
-  #   volumes:
-  #     - /etc/elastiflow:/etc/elastiflow
-  #   environment:
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_ENABLE: 'true'
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_OVERWRITE: 'true'
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_SHARDS: 1
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_REPLICAS: 0
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_ADDRESSES: 'elasticsearch:9200'
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_USERNAME: 'elastic'
-  #     EF_FLOW_OUTPUT_ELASTICSEARCH_PASSWORD: 'Letmein123!'
 
 networks:
   elk:
@@ -113,3 +112,5 @@ networks:
 
 volumes:
   elasticsearch:
+  certs:
+    driver: local

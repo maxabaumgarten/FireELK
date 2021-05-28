@@ -1,5 +1,5 @@
 # FireELK 🔥🦌
-An ELK stack used for processing and visualizing firewall logs
+An ELK Stack deployed with TLS Security for Logs
 
 v.04
 
@@ -7,12 +7,11 @@ v.04
 ![Cool Pew Pew Map](https://github.com/maxabaumgarten/fireelk/blob/master/images/firewall%20laser%20beam%20map.PNG)
 ![ELK Firewall Charts](https://github.com/maxabaumgarten/fireelk/blob/master/images/elk%20firewall%20visualization.PNG)
 # WARNING
-- The passwords are all in plaintext
-- Look at the code, the passwords are all "Letmein123!"
-- Certificate based authentication/encryption coming soon
+- Passwords are set using the .env
+- This was built in mind for simple functionality. Not Security.
 
 # Details
-- Provides a unified platform to ingest, parse, and visualize firewall logs
+- Provides a unified platform to ingest, parse, and visualize logs
 - Centralize multi-vendor logs
 - Converts firewall syslog into the ECS (Elastic Common Schema) with Logstash
 - Docker-Compose: Spins up a single node cluster of Elasticsearch, Logstash, Kibana
@@ -26,15 +25,21 @@ v.04
 
 # How do I run this?
 1. Install Docker and Docker-Compose
-2. Create the following folders/files:
+2. Create CA and Certificates
+```sh
+docker-compose -f create-certs.yml run --rm create_certs
+```
+3. Build and Start ELK
+```sh
+docker-compose up -d
+```
 
-- ./elasticsearch/elasticsearch.yml
-- ./logstash/config/logstash.yml
-- ./logstash/pipeline (Pipelines are used for the logstash configs)
-- ./kibana/kibana.yml
-(.yml files not available yet. Visit www.elastic.co to get started)
+# How do I destroy this?
 
-3.  docker-compose up -d
+This will destroy all of ur data.
+```sh
+docker-compose down -v
+```
 
 # Supported Firewall Syslog ECS Conversions
 - Check Point (Gaia Embedded)
@@ -49,3 +54,4 @@ v.04
 - VyOS/Ubiquiti Edgerouter Syslog > ECS
 - Certificate Based X-Pack Security
 - Improved Elastic Security (SIEM) support
+- Use .env file for credentials
