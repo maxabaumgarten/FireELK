@@ -52,6 +52,3 @@ docker-compose down -v
 - Palo Alto Syslog > ECS
 - Cisco Syslog > ECS
 - VyOS/Ubiquiti Edgerouter Syslog > ECS
-- Certificate Based X-Pack Security
-- Improved Elastic Security (SIEM) support
-- Use .env file for credentials
