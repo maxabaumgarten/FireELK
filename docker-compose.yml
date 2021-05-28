@@ -61,6 +61,7 @@ services:
     environment:
       - "LS_JAVA_OPTS=-Xmx512m -Xms512m"
       - path.config=null
+      - path.settings=null
       - node.name=logstash
       - xpack.security.transport.ssl.certificate_authority=$CERTS_DIR/ca/ca.crt
       - xpack.monitoring.elasticsearch.hosts="https://elasticsearch:9200"
