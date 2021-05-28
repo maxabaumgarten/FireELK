@@ -1,7 +1,7 @@
 # FireELK 🔥🦌
 An ELK Stack deployed with TLS Security for Logs
 
-v.04
+v1.0
 
 ![Firewall Logs](https://github.com/maxabaumgarten/fireelk/blob/master/images/firewall%20logs.PNG)
 ![Cool Pew Pew Map](https://github.com/maxabaumgarten/fireelk/blob/master/images/firewall%20laser%20beam%20map.PNG)
