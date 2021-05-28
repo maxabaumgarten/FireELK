@@ -52,6 +52,7 @@ services:
         source: ./logstash/pipeline/logstash.conf
         target: /usr/share/logstash/pipeline/logstash.conf
         read_only: true
+      - certs:$CERTS_DIR
 #      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
 #      - ./logstash/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     ports:
@@ -60,18 +61,17 @@ services:
       - "9600:9600"
     environment:
       - "LS_JAVA_OPTS=-Xmx512m -Xms512m"
-      # - path.config=null
-      # - path.settings=null
-      # - node.name=logstash
-      # - xpack.security.transport.ssl.certificate_authority=$CERTS_DIR/ca/ca.crt
-      # - xpack.monitoring.elasticsearch.hosts="https://elasticsearch:9200"
-      # - xpack.monitoring.enabled=true
-      # - xpack.monitoring.elasticsearch.username=elastic
-      # - xpack.monitoring.elasticsearch.password=$ELASTIC_PASSWORD
-      # - xpack.management.elasticsearch.username=elastic    
-      # - xpack.management.elasticsearch.password=${ELASTIC_PASSWORD}
-    volumes:
-      - certs:$CERTS_DIR
+#      - path.data: 
+      - path.config=null
+      - path.settings=null
+      - node.name=logstash
+      - xpack.security.transport.ssl.certificate_authority=$CERTS_DIR/ca/ca.crt
+      - xpack.monitoring.elasticsearch.hosts="https://elasticsearch:9200"
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.elasticsearch.username=elastic
+      - xpack.monitoring.elasticsearch.password=$ELASTIC_PASSWORD
+      - xpack.management.elasticsearch.username=elastic    
+      - xpack.management.elasticsearch.password=${ELASTIC_PASSWORD}
     logging:
       driver: "json-file"
       options:
