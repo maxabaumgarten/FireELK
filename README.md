@@ -27,11 +27,15 @@ v1.0
 
 # How do I run this?
 1. Install Docker and Docker-Compose
-2. Create CA and Certificates
+2. Clone Repo
+```sh
+git clone https://github.com/maxabaumgarten/FireELK.git
+```
+3. Create CA and Certificates
 ```sh
 docker-compose -f create-certs.yml run --rm create_certs
 ```
-3. Build and Start ELK
+4. Build and Start ELK
 ```sh
 docker-compose up -d
 ```
