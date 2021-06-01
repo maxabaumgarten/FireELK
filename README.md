@@ -42,7 +42,7 @@ docker-compose up -d
 
 # How do I destroy this?
 
-This will destroy all of ur data.
+This will destroy all of your data.
 ```sh
 docker-compose down -v
 ```
