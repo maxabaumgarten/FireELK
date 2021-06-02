@@ -55,7 +55,7 @@ services:
         source: ./pipes/firewallpipe.conf
         target: /usr/share/logstash/pipeline/firewallpipe.conf
         read_only: true
-        - type: bind
+      - type: bind
         source: ./pipes/piholepipe.conf
         target: /usr/share/logstash/pipeline/piholepipe.conf
         read_only: true
