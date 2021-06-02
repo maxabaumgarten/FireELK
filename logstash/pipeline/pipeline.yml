@@ -1,7 +1,7 @@
 # config/pipelines.yml
 - pipeline.id: beats-server
   config.string: |
-    input { beats { port => 5044 } }
+    input { beats { port => "5044" } }
     output {
         if [tag] == "checkpoint" {
           pipeline { send_to => "checkpoint" }
