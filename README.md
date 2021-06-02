@@ -6,7 +6,7 @@ v1.0
 ![Firewall Logs](https://github.com/maxabaumgarten/fireelk/blob/master/images/firewall%20logs.PNG)
 ![Cool Pew Pew Map](https://github.com/maxabaumgarten/fireelk/blob/master/images/firewall%20laser%20beam%20map.PNG)
 ![ELK Firewall Charts](https://github.com/maxabaumgarten/fireelk/blob/master/images/elk%20firewall%20visualization.PNG)
-
+![Example Topology](https://github.com/maxabaumgarten/fireelk/blob/master/images/ELK.png)
 # WARNING
 
 - Passwords are set using the .env
