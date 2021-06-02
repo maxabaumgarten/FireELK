@@ -1,3 +1,5 @@
 scratch.yml
 filebeat.yml
 .env
+**/pipes/
+fortinetpipe.conf
