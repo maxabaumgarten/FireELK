@@ -47,10 +47,14 @@ services:
         source: ./logstash/config/logstash.yml
         target: /usr/share/logstash/config/logstash.yml
       - type: bind
-        source: ./logstash/pipeline
-        target: /usr/share/logstash/pipeline
+        source: ./logstash/pipeline/pipelines.yml
+        target: /usr/share/logstash/config/pipelines.yml
         read_only: true
       - certs:$CERTS_DIR
+      - type: bind
+        source: ./pipes/firewallpipe.conf
+        target: /usr/share/logstash/pipeline
+        read_only: true
     ports:
       - "5000:5000/udp"
       - "5044:5044"
