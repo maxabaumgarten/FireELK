@@ -59,11 +59,12 @@ This will destroy all of your data.
 docker-compose down -v
 ```
 
-## Supported Firewall Syslog ECS Conversions
+## Built-In ECS Conversions
 
-- Check Point (Gaia Embedded)
-- Fortinet
-- Check Point (Gaia) - BETA
+- Check Point (Gaia Embedded) - ```firewallpipe.conf```
+- Fortinet - ```firewallpipe.conf```
+- Check Point (Gaia) - BETA - ```firewallpipe.conf```
+- PiHole - ```piholepipe.conf``` 
 
 ## Planned Features
 
