@@ -1,0 +1,15 @@
+- pipeline.id: beats-server
+  config.string: |
+    input { beats { port => 5044 } }
+    output {
+        if [tag] == "checkpoint" {
+          pipeline { send_to => checkpoint }
+        } else if [tag] == "fortinet" {
+          pipeline { send_to => fortinet }
+        } 
+    }
+- pipeline.id: checkpoint-processing
+  path.config: "/logstash/config/pipeline/pipelines/checkpointpipe.conf"
+
+- pipeline.id: fortinet-processing
+  path.config: "/logstash/config/pipeline/pipelines/fortinetpipe.conf"
