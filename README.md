@@ -26,9 +26,8 @@ Here is the basic topology:
 
 ![Example Topology](https://github.com/maxabaumgarten/fireelk/blob/master/images/ELK.png)
 
-- Check Point and Fortinet send syslog to a server which does some basic processing with rsyslog.  Beats is then used to tag and ship the logs to the docker host running Logstash ( Elasticsearch, and Kibana).  Logstash converts syslog to the ECS and then Elasticsearch applies an index template.  Logs can now be visualized using Kibana and SIEM operations can be performed using Elastic Security.  Logstash Pipeline for firewalls can be found in the ```firewallpipe.conf``` file.
-- PiHole DNS logs now have a pipeline (Added 6/2/2021). Logstash Pipeline for PiHole can be found in the ```piholepipe.conf``` file.
-
+- Check Point and Fortinet send syslog to a server which does some basic processing with rsyslog.  Filebeat is then used to tag and ship the logs to the docker host running Logstash ( Elasticsearch, and Kibana). Filebeat logs for firewalls ingest on port 5044.  Logstash converts syslog to the ECS and then Elasticsearch applies an index template.  Logs can now be visualized using Kibana and SIEM operations can be performed using Elastic Security.  Logstash Pipeline for firewalls can be found in the ```firewallpipe.conf``` file.
+- PiHole DNS logs now have a pipeline (Added 6/2/2021).  I run a Filebeat container and send the logs to Logstash on port 5045. Logstash Pipeline for PiHole can be found in the ```piholepipe.conf``` file.
 
 ## Who should use this?
 
