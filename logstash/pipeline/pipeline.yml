@@ -9,7 +9,7 @@
         } 
     }
 - pipeline.id: checkpoint-processing
-  path.config: "/logstash/config/pipeline/pipelines/checkpointpipe.conf"
+  path.config: "//usr/share/logstash/pipeline/pipelines/checkpointpipe.conf"
 
 - pipeline.id: fortinet-processing
-  path.config: "/logstash/config/pipeline/pipelines/fortinetpipe.conf"
+  path.config: "/usr/share/logstash/pipeline/pipelines/fortinetpipe.conf"

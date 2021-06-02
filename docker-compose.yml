@@ -47,8 +47,8 @@ services:
         source: ./logstash/config/logstash.yml
         target: /usr/share/logstash/config/logstash.yml
       - type: bind
-        source: ./logstash/pipeline/logstash.conf
-        target: /usr/share/logstash/pipeline/logstash.conf
+        source: ./logstash/pipeline
+        target: /usr/share/logstash/pipeline
         read_only: true
       - certs:$CERTS_DIR
     ports:
