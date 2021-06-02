@@ -1,3 +1,4 @@
+# config/pipelines.yml
 - pipeline.id: beats-server
   config.string: |
     input { beats { port => 5044 } }
