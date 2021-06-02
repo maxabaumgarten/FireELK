@@ -54,7 +54,6 @@ services:
       - type: bind
         source: ./pipes/firewallpipe.conf
         target: /usr/share/logstash/pipeline/
-        read_only: true
     ports:
       - "5000:5000/udp"
       - "5044:5044"
