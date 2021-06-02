@@ -53,7 +53,7 @@ services:
       - certs:$CERTS_DIR
       - type: bind
         source: ./pipes
-        target: /etc/logstash/conf.d
+        target: /usr/share/logstash/config
     ports:
       - "5000:5000/udp"
       - "5044:5044"
