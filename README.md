@@ -36,7 +36,7 @@ Here is the basic topology:
 - Enterprises looking to not pay by the GB for fancy SIEMs (Bad idea)
 - Employees who want to show upper management cool dashboards during their performance review
 
-### How do I run this?
+## How do I run this?
 
 1. Install Docker and Docker-Compose
 2. Clone Repo
@@ -52,20 +52,20 @@ docker-compose -f create-certs.yml run --rm create_certs
 docker-compose up -d
 ```
 
-### How do I destroy this?
+## How do I destroy this?
 
 This will destroy all of your data.
 ```sh
 docker-compose down -v
 ```
 
-### Supported Firewall Syslog ECS Conversions
+## Supported Firewall Syslog ECS Conversions
 
 - Check Point (Gaia Embedded)
 - Fortinet
 - Check Point (Gaia) - BETA
 
-### Planned Features
+## Planned Features
 
 - NGFW Feature ECS Conversion (IPS, AV, Emulation, Filtering, DNS Security)
 - Palo Alto Syslog > ECS
