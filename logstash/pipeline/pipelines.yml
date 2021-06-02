@@ -1,4 +1,4 @@
-#/config/pipeline
+#config/pipeline
 - pipeline.id: "firewallpipe"
   path.config: "/usr/share/logstash/config/firewallpipe.conf"
 # - pipeline.id: access
