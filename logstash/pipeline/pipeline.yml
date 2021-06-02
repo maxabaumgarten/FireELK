@@ -1,3 +1,4 @@
+#/config/pipeline
 - pipeline.id: firewallpipe
   path.config: "/etc/logstash/conf.d/firewallpipe.conf"
 # - pipeline.id: access
