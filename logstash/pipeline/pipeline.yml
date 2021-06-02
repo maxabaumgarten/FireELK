@@ -3,9 +3,9 @@
   config.string: |
     input { beats { port => "5044" } }
     output {
-        if [tag] == "checkpoint" {
+        if "checkpoint" in [tag] {
           pipeline { send_to => "checkpoint" }
-        } else if [tag] == "fortinet" {
+        } else if "fortinet" in [tag] {
           pipeline { send_to => "fortinet" }
         }
 - pipeline.id: checkpoint-processing
