@@ -11,12 +11,12 @@ An ELK Stack deployed with TLS Security for Logs
 ![Firewall Logs](https://github.com/maxabaumgarten/fireelk/blob/master/images/firewall%20logs.PNG)
 ![Cool Pew Pew Map](https://github.com/maxabaumgarten/fireelk/blob/master/images/firewall%20laser%20beam%20map.PNG)
 ![ELK Firewall Charts](https://github.com/maxabaumgarten/fireelk/blob/master/images/elk%20firewall%20visualization.PNG)
-![Example Topology](https://github.com/maxabaumgarten/fireelk/blob/master/images/ELK.png)
+
 ## WARNING
 
-- Passwords are set using the .env
+- Passwords are set using the .env.  Default password is "Letmein123!"
 - This was built in mind for simple functionality. Not Security.
-- Tested with ELK 7.11, 7.12, and 7.13.0 on Ubuntu 20.04
+- Tested with ELK 7.11, 7.12, and 7.13.0 on Ubuntu 20.04 and Docker-Compose 3.7
 
 ## Details
 
