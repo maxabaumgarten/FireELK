@@ -44,16 +44,19 @@ services:
     container_name: logstash
     volumes:
       - type: bind
-        source: ./logstash/config/logstash.yml
-        target: /usr/share/logstash/config/logstash.yml
+        source: ./logstash/config/
+        target: /usr/share/logstash/config/
+      # - type: bind
+      #   source: ./logstash/config/logstash.yml
+      #   target: /usr/share/logstash/config/logstash.yml
       - type: bind
         source: ./logstash/pipeline
         target: /usr/share/logstash/pipeline
         read_only: true
       - certs:$CERTS_DIR
-      - type: bind
-        source: ./pipes
-        target: /usr/share/logstash/config
+      # - type: bind
+      #   source: ./pipes
+      #   target: /usr/share/logstash/config
     ports:
       - "5000:5000/udp"
       - "5044:5044"
