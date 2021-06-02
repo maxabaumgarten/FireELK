@@ -51,6 +51,9 @@ services:
         target: /usr/share/logstash/pipeline
         read_only: true
       - certs:$CERTS_DIR
+      - type: bind
+        source: ./pipes
+        target: /etc/logstash/conf.d
     ports:
       - "5000:5000/udp"
       - "5044:5044"
@@ -65,6 +68,7 @@ services:
       - xpack.monitoring.elasticsearch.password=$ELASTIC_PASSWORD
       - xpack.management.elasticsearch.username=elastic    
       - xpack.management.elasticsearch.password=${ELASTIC_PASSWORD}
+      - config.reload.automatic=true
       - E_USER=elastic
       - E_PASS=$ELASTIC_PASSWORD
     logging:
