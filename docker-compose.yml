@@ -53,7 +53,7 @@ services:
       - certs:$CERTS_DIR
       - type: bind
         source: ./pipes/firewallpipe.conf
-        target: /usr/share/logstash/pipeline
+        target: /usr/share/logstash/pipeline/
         read_only: true
     ports:
       - "5000:5000/udp"
