@@ -51,9 +51,9 @@ services:
         target: /usr/share/logstash/pipeline
         read_only: true
       - certs:$CERTS_DIR
-       - type: bind
-         source: ./pipes
-         target: /etc/logstash/conf.d
+      - type: bind
+        source: ./pipes
+        target: /etc/logstash/conf.d
     ports:
       - "5000:5000/udp"
       - "5044:5044"
