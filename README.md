@@ -20,13 +20,13 @@ An ELK Stack deployed with TLS Security for Logs
 
 ## Details
 
-This was built with a focus on Network Security logging, but can be used for any other log analysis.  Currently, this is ships with a Logstash Pipeline for analyzing Check Point and Fortinet logs and processing them into the ECS.
+This was built with a focus on Network Security logging, analysis, and alerting, but can be used for any other log analysis.  Currently, this is ships with a Logstash Pipeline for analyzing Check Point and Fortinet logs and processing them into the ECS.
 
 Here is the basic topology:
 
 ![Example Topology](https://github.com/maxabaumgarten/fireelk/blob/master/images/ELK.png)
 
-- Check Point and Fortinet send syslog to a server which does some basic processing with rsyslog.  Beats is then used to tag and ship the logs to Logstash.  Logstash does some ECS conversions and then Elasticsearch applies an index template.  Logs can now be visualized using Kibana and SIEM operations can be performed using Elastic Security.
+- Check Point and Fortinet send syslog to a server which does some basic processing with rsyslog.  Beats is then used to tag and ship the logs to the docker host running Logstash ( Elasticsearch, and Kibana).  Logstash does some ECS conversions and then Elasticsearch applies an index template.  Logs can now be visualized using Kibana and SIEM operations can be performed using Elastic Security.
 
 
 ## Who should use this?
