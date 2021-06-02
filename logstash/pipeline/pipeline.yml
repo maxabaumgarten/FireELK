@@ -7,10 +7,8 @@
           pipeline { send_to => "checkpoint" }
         } else if [tag] == "fortinet" {
           pipeline { send_to => "fortinet" }
-        } 
-    }
+        }
 - pipeline.id: checkpoint-processing
   path.config: "/etc/logstash/conf.d/checkpointpipe.conf"
-
 - pipeline.id: fortinet-processing
   path.config: "/etc/logstash/conf.d/fortinetpipe.conf"
