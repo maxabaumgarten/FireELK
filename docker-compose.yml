@@ -14,7 +14,7 @@ services:
         target: /usr/share/elasticsearch/data
       - certs:$CERTS_DIR
     environment:
-      - "ES_JAVA_OPTS=-Xmx2g -Xms2g"
+      - "ES_JAVA_OPTS=-Xmx4g -Xms4g"
       - discovery.type=single-node
       - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
       - node.name=elasticsearch     
