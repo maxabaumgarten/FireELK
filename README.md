@@ -54,10 +54,8 @@ docker-compose -f create-certs.yml run --rm create_certs
 docker-compose up -d
 ```
 5. Login to Kibana @ *https://your-docker-server:5601*
-  
-  User: elastic
-  
-  Password: *Default:* Letmein123! (*Or whatever is set in ```.env``` file*)
+   User: elastic
+   Password: *Default:* Letmein123! (*Or whatever is set in ```.env``` file*)
 
 ## How do I destroy this?
 
